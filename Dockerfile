@@ -8,7 +8,7 @@ COPY package-lock.json ./
 # do a clean install
 RUN npm ci --silent
 # this fixes a bug with newer versions of react-scripts & docker
-RUN npm install react-scripts@3.4.3 -g --silent
+# RUN npm install react-scripts@3.4.3 -g --silent
 # RUN npm audit fix
 COPY . ./
 RUN npm run build
