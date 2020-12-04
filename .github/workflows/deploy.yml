@@ -32,4 +32,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - run: aws s3 sync ./out s3://fb-nextjs-gitactions
+
+      - uses: docker/build-push-action@v1
+        with:
+          push: true
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: fabianbrash/nextjs-blog-demo
+          tags: 1.0.0
+          tag_with_sha: true
+          tag_with_ref: true
         
